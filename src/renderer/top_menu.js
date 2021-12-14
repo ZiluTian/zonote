@@ -1,6 +1,8 @@
 const hotkeys = require('hotkeys-js')
 
 const menuElm = document.getElementById('menu')
+const topElm = document.getElementById("top")
+
 const menuButtonElm = document.getElementById('menu-button')
 const topButtonCloseAppElm = document.getElementById('close')
 const fileElm = document.getElementById('file')
@@ -153,6 +155,8 @@ menuButtonSaveElm.onclick =  () => EVENTS.emit('save file')
 menuButtonTabsElm.onclick = () => EVENTS.emit('toggle tabs')
 menuButtonExitElm.onclick =  () => EVENTS.emit('close')
 topButtonCloseAppElm.onclick =  () => EVENTS.emit('close')
+
+topElm.ondblclick = () => IPC.send('maximize')
 
 hotkeys('esc', () => EVENTS.emit('lose focus'))
 hotkeys('ctrl+n,command+n', () => EVENTS.emit('new file'))
